@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+[[ ! -x $(which git) ]] && echo "you're gonna need git installed" && exit 1
+
+here=$(git rev-parse --show-toplevel)
+echo "fill me in doofus im right $here"
