@@ -1,17 +1,20 @@
-![](https://github.com/$GITHUB_USERNAME/$REPO/workflows/shellcheck/badge.svg)
+![](https://github.com/jdodds/git.conf/workflows/shellcheck/badge.svg)
 ---
-# u readin yet
+# git.conf
 
-oh boy its the readme for your new exiting
+what it says on the tin.
 
-|c|o|n|f|i|g|
-|-|-|-|-|-|-|
-|u|r|a|t|o|r|
+## things you might care about:
++ we set `eol=true` and don't use `autocrlf`. If you want crlf locally, you'll need to change that
++ `git show-alias` is the most useful alias
++ `branch.sort -committerdate` sorts `git branch` by most recently updated
++ `help.autoCorrect 1` makes git just run the command instead of mocking you
++ `rerere` is on
++ `showbranch` defaults to having `HEAD` and `master`
++ `~/.gitconfig.local` gets sourced
++ if you have [delta](https://github.com/dandavison/delta) we use it for `core.pager`, it's set in `~/.gitconfig.local`
 
-- [ ] do
-- [ ] the
-- [ ] thing
 
-<details>
-this isn't markdown but it's nice
-</details>
+## installing
+
+`./install` installs as symlinks into `~/` making a `filename.bak` for any file it's about to overwrite with a symlink unless it's pointing to ourselves already.

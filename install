@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 
-[[ ! -x $(which git) ]] && echo "you're gonna need git installed" && exit 1
+[[ ! -x $(command -v git) ]] && echo "you're gonna need git installed" && exit 1
 
 here=$(git rev-parse --show-toplevel)
-echo "fill me in doofus im right $here"
+
+pgr="delta --dark"
+if [[ ! $(command -v delta) ]] ; then
+    echo "consider using https://github.com/dandavison/delta it's pretty nice"
+else
+    gfl="$HOME/.gitconfig.local"
+    [[ -f "$gfl" ]] && cp "$gfl" "$gfl.bak"
+    printf -v setp '[core]\npager=%s\n' "$pgr"
+    echo "$setp" > "$gfl"
+fi
+
+src="$here/gitconfig"
+dst="$HOME/.gitconfig"
+
+[[ ! "$src" -ef "$dst" ]] && mv "$dst" "$dst.bak"
+
+ln -sf "$src" "$dst"
