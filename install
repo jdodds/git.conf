@@ -5,13 +5,14 @@
 here=$(git rev-parse --show-toplevel)
 
 pgr="delta --dark"
+gfl="$HOME/.gitconfig.local"
 if [[ ! $(command -v delta) ]] ; then
     echo "consider using https://github.com/dandavison/delta it's pretty nice"
-else
-    gfl="$HOME/.gitconfig.local"
+elif ! grep -qe "$pgr" "$gfl" ; then
     [[ -f "$gfl" ]] && cp "$gfl" "$gfl.bak"
     printf -v setp '[core]\npager=%s\n' "$pgr"
     echo "$setp" > "$gfl"
+    cat "$gfl.bak" >> "$gfl"
 fi
 
 src="$here/gitconfig"

@@ -17,4 +17,4 @@ what it says on the tin.
 
 ## installing
 
-`./install` installs as symlinks into `~/` making a `filename.bak` for any file it's about to overwrite with a symlink unless it's pointing to ourselves already.
+`./install` symlinks this gitconfig to your `$HOME/.gitconfig`, creating a backup first. We also use `$HOME/.gitconfig.local` to set `core.pager`, but don't touch it if you're already using delta and preserve the rest of it's contents in-file.
