@@ -1,5 +1,4 @@
 [core]
-precomposeUnicode = true
 eol = lf
 editor = emacsclient
 whitespace = tabwidth=4
